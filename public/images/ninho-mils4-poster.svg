@@ -1,0 +1,39 @@
+<svg width="900" height="1200" viewBox="0 0 900 1200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090909"/>
+      <stop offset="0.45" stop-color="#17110d"/>
+      <stop offset="1" stop-color="#3a150e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="35%" r="55%">
+      <stop offset="0" stop-color="#ffb000" stop-opacity="0.4"/>
+      <stop offset="0.45" stop-color="#d7331f" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0v48" fill="none" stroke="#fff" stroke-opacity="0.035"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <rect width="900" height="1200" fill="url(#grid)"/>
+  <circle cx="450" cy="360" r="360" fill="url(#glow)"/>
+  <ellipse cx="450" cy="980" rx="360" ry="70" fill="#000" opacity="0.45" filter="url(#soft)"/>
+  <path d="M280 820c30-185 76-290 170-290s150 105 175 290" fill="#0b0b0b" stroke="#f3b33b" stroke-opacity="0.25" stroke-width="4"/>
+  <circle cx="450" cy="405" r="138" fill="#111" stroke="#f0a020" stroke-opacity="0.35" stroke-width="5"/>
+  <path d="M320 390c70-120 195-105 260-25-30-155-218-180-285-45-28 55-22 118 15 166 5-36 3-65 10-96z" fill="#1c1713"/>
+  <path d="M330 480c36 74 197 74 240 0-32 42-73 64-120 64s-88-22-120-64z" fill="#26201b" opacity="0.7"/>
+  <rect x="210" y="760" width="480" height="250" rx="28" fill="#111" stroke="#fff" stroke-opacity="0.08"/>
+  <text x="450" y="135" text-anchor="middle" font-family="Impact, 'Arial Black', sans-serif" font-size="74" fill="#f5efe0" letter-spacing="12">NINHO</text>
+  <text x="450" y="230" text-anchor="middle" font-family="Impact, 'Arial Black', sans-serif" font-size="44" fill="#d1a34c" letter-spacing="9">REC. 118</text>
+  <text x="450" y="870" text-anchor="middle" font-family="Impact, 'Arial Black', sans-serif" font-size="128" fill="#f0a020" letter-spacing="8">M.I.L.S 4</text>
+  <text x="450" y="930" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#f5efe0" letter-spacing="6">MAINTENANT ILS LE SAVENT</text>
+  <text x="450" y="1020" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#fff" opacity="0.78">SORTIE · 09 JANVIER 2026</text>
+  <text x="450" y="1070" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#f0a020" opacity="0.9" letter-spacing="4">STREAMING · TOUR · MEDIA · BILLETTERIE</text>
+  <g opacity="0.75">
+    <rect x="120" y="675" width="130" height="6" fill="#f0a020"/>
+    <rect x="650" y="675" width="130" height="6" fill="#f0a020"/>
+    <rect x="160" y="715" width="90" height="3" fill="#d7331f"/>
+    <rect x="650" y="715" width="90" height="3" fill="#d7331f"/>
+  </g>
+</svg>
