@@ -1,0 +1,1 @@
+.footer{display:flex;justify-content:space-between;align-items:flex-start;gap:22px;padding:42px clamp(18px,7vw,96px) 110px;border-top:1px solid var(--border);color:var(--muted)}.footer strong{font-family:'Bebas Neue';font-size:34px;color:var(--gold);letter-spacing:.06em}.footer span{max-width:650px;line-height:1.6}@media(max-width:760px){.footer{flex-direction:column}}
