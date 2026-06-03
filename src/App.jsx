@@ -4,6 +4,7 @@ import { initialTourDates } from "./data/tourDates";
 import { initialBlogPosts } from "./data/blogPosts";
 import { durationToSeconds } from "./utils/date";
 import { loadStorage, saveStorage } from "./utils/storage";
+import { safeEmail } from "./utils/security";
 import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
 import ProjectSection from "./components/ProjectSection";
@@ -201,11 +202,9 @@ export default function App() {
   }
 
   function addSubscriber(email) {
-    const cleanEmail = String(email).trim().toLowerCase();
+    const cleanEmail = safeEmail(email);
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(cleanEmail)) {
+    if (!cleanEmail) {
       return;
     }
 

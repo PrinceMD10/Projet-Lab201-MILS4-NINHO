@@ -4,21 +4,38 @@ import styles from "./TicketModal.module.css";
 export default function TicketModal({ date, onClose }) {
   if (!date) return null;
 
+  const ticketUrl =
+    typeof date.ticketUrl === "string" && date.ticketUrl.startsWith("https://")
+      ? date.ticketUrl
+      : "#";
+
   return (
     <div
       className={styles.overlay}
       onMouseDown={(e) => {
-        if (e.target === e.currentTarget) onClose();
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
       }}
     >
-      <div className={styles.modal}>
-        <button type="button" className={styles.close} onClick={onClose}>
+      <div
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="ticket-title"
+      >
+        <button
+          type="button"
+          className={styles.close}
+          onClick={onClose}
+          aria-label="Fermer"
+        >
           ×
         </button>
 
         <span>Billetterie officielle</span>
 
-        <h2>{date.ville}</h2>
+        <h2 id="ticket-title">{date.ville}</h2>
 
         <p>
           {date.lieu} · {formatDate(date.date)}
@@ -45,17 +62,41 @@ export default function TicketModal({ date, onClose }) {
           <p>
             <strong>Date :</strong> {formatDate(date.date)}
           </p>
+
+          {date.address && (
+            <p>
+              <strong>Adresse :</strong> {date.address}
+            </p>
+          )}
+
+          {date.doors && (
+            <p>
+              <strong>Ouverture :</strong> {date.doors}
+            </p>
+          )}
+
+          {date.show && (
+            <p>
+              <strong>Début du concert :</strong> {date.show}
+            </p>
+          )}
         </div>
 
         <div className={styles.actions}>
-          <a
-            href={date.ticketUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.buyBtn}
-          >
-            Réserver sur la plateforme officielle
-          </a>
+          {ticketUrl !== "#" ? (
+            <a
+              href={ticketUrl}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className={styles.buyBtn}
+            >
+              Réserver sur la plateforme officielle
+            </a>
+          ) : (
+            <button type="button" className={styles.buyBtn} disabled>
+              Billetterie indisponible
+            </button>
+          )}
         </div>
       </div>
     </div>
