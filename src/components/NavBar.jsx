@@ -8,7 +8,7 @@ const links = [
   ["#tour", "Billets"],
 ];
 
-export default function NavBar({ onOpenAdmin }) {
+export default function NavBar() {
   const [open, setOpen] = useState(false);
   const [compact, setCompact] = useState(false);
 
@@ -31,9 +31,6 @@ export default function NavBar({ onOpenAdmin }) {
           </a>
         ))}
       </nav>
-      <button className={styles.adminButton} onClick={onOpenAdmin}>
-        Back-office
-      </button>
       <button
         className={`${styles.burger} ${open ? styles.burgerOpen : ""}`}
         onClick={() => setOpen((value) => !value)}

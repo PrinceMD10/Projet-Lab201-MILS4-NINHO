@@ -53,6 +53,41 @@ export default function App() {
   const [audioWarning, setAudioWarning] = useState("");
   const audioRef = useRef(null);
 
+  useEffect(() => {
+    const openAdminFromUrl = () => {
+      const isAdminUrl =
+        window.location.pathname === "/back-office" ||
+        window.location.pathname === "/admin" ||
+        window.location.hash === "#back-office" ||
+        new URLSearchParams(window.location.search).has("admin");
+
+      if (isAdminUrl) {
+        setAdminOpen(true);
+      }
+    };
+
+    openAdminFromUrl();
+    window.addEventListener("popstate", openAdminFromUrl);
+    window.addEventListener("hashchange", openAdminFromUrl);
+
+    return () => {
+      window.removeEventListener("popstate", openAdminFromUrl);
+      window.removeEventListener("hashchange", openAdminFromUrl);
+    };
+  }, []);
+
+  function closeAdmin() {
+    setAdminOpen(false);
+    if (
+      window.location.pathname === "/back-office" ||
+      window.location.pathname === "/admin" ||
+      window.location.hash === "#back-office" ||
+      new URLSearchParams(window.location.search).has("admin")
+    ) {
+      window.history.replaceState({}, "", "/");
+    }
+  }
+
   // Stable ref to avoid stale closure in onended
   const currentRef = useRef(current);
   const playingRef = useRef(playing);
@@ -221,7 +256,7 @@ export default function App() {
 
   return (
     <>
-      <NavBar onOpenAdmin={() => setAdminOpen(true)} />
+      <NavBar />
       <Hero />
       <ProjectSection />
       <DashboardSection
@@ -292,13 +327,9 @@ export default function App() {
       />
       <AdminModal
         open={adminOpen}
-        onClose={() => setAdminOpen(false)}
+        onClose={closeAdmin}
         dates={dates}
         setDates={setDates}
-        posts={posts}
-        setPosts={setPosts}
-        orders={orders}
-        subscribers={subscribers}
       />
     </>
   );
